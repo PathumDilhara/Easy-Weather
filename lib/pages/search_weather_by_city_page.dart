@@ -74,7 +74,7 @@ class _SearchWeatherByCityPageState extends State<SearchWeatherByCityPage> {
               _error !=null ? Text(_error!, style: const TextStyle(color: Colors.red),) :
                   _weather != null ? DisplayWeatherWidget(weather: _weather!) : const SizedBox(),
             ],
-          ),
+          )
         ),
       ),
     );

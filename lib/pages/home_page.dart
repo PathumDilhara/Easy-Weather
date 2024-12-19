@@ -1,8 +1,10 @@
 import 'package:easy_weather/models/weather_model.dart';
+import 'package:easy_weather/providers/theme_provider.dart';
 import 'package:easy_weather/services/weather_services.dart';
 import 'package:easy_weather/widgets/display_weather_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 
 import 'search_weather_by_city_page.dart';
 
@@ -47,7 +49,17 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(fontWeight: FontWeight.w400),
           ),
           actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.light_mode))
+            IconButton(
+              onPressed: () {
+                Provider.of<ThemeProvider>(context, listen: false).toggleTheme(
+                    Theme.of(context).brightness != Brightness.dark);
+              },
+              icon: Icon(
+                Theme.of(context).brightness == Brightness.dark
+                    ? Icons.light_mode
+                    : Icons.dark_mode,
+              ),
+            ),
           ],
         ),
         body: _weather != null
